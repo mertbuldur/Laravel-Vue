@@ -1,0 +1,77 @@
+ul,li
+{
+    padding:0;
+    margin:0;
+    list-style-type:none;
+}
+
+.select-time-ul .select-time
+{
+    padding:10px;
+    background:white;
+    border-radius:5px;
+    margin-bottom:5px;
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);
+}
+
+li.errors
+{
+    background:white;
+    padding:5px;
+    display: block;
+    color:red;
+    border:1px solid red;
+    margin-bottom:3px;
+    border-radius:4px;
+}
+
+.complete-form
+{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+}
+.complete-form i
+{
+    font-size:15em;
+    color:green;
+}
+
+.complete-form span
+{
+    font-size:20px;
+}
+
+.select-time.passive
+{
+    background: #c5c4c44f;
+}
+
+.select-time.passive span
+{
+    text-decoration: line-through;
+}
+
+
+
+.appointment-card
+{
+    background: white;
+    border:1px solid #f5f5f5;
+    padding: 10px;
+}
+
+.appointment-card .appointment-number
+{
+    text-align: center;
+    font-size:17px;
+}
+
+.appointment-detail
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
