@@ -24,7 +24,9 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "express": "^4.15.2",
         "laravel-vue-pagination": "^2.3.0",
+        "socket.io": "^2.2.0",
         "v-mask": "^2.0.2",
         "vue-resource": "^1.5.1"
     }

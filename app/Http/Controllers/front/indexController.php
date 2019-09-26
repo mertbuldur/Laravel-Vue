@@ -11,4 +11,10 @@ class indexController extends Controller
     {
         return view('front.index');
     }
+
+
+    public function detail()
+    {
+        return view('front.detail');
+    }
 }

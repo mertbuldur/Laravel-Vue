@@ -4,9 +4,7 @@
     <div class="row">
         <div class="col-md-12">
         <div id="form">
-
-            <randevuform-component></randevuform-component>
-
+            <appointment-form></appointment-form>
         </div>
         </div>
     </div>

@@ -1,5 +1,14 @@
 <?php
+define('APPOINTMENT_DEFAULT',0);
+define('APPOINTMENT_SUCCESS',1);
+define('APPOINTMENT_CANCEL',2);
 
+define('NOTIFICATION_SMS',0);
+define('NOTIFICATION_EMAIL',1);
+
+define('REMINDER_DEFAULT',0);
+define('REMINDER_SUCCESS',1);
+define('REMINDER_FAILED',2);
 return [
 
     /*
@@ -67,7 +76,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/Istanbul',
 
     /*
     |--------------------------------------------------------------------------

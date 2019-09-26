@@ -1,4 +1,4 @@
 @extends('layouts.app')
 @section('content')
-<admin-appointment></admin-appointment>
+    <admin-working></admin-working>
 @endsection

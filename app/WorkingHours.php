@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class WorkingHours extends Model
 {
+    protected  $guarded = [];
     static function getString($workingHourId)
     {
         $c = WorkingHours::where('id',$workingHourId)->count();

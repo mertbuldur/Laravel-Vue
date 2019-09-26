@@ -2,6 +2,13 @@
     <div>
     <div v-if="completeForm">
         <div class="container">
+                <div class="main">
+                    <h2>Randevu Takip Sistemi</h2>
+                    <h3>Randevu Oluşturmak için bilgileri doğru giriniz</h3>
+
+                </div>
+
+
                 <div class="row">
                     <div class="col-md-12">
                         <ul>
@@ -11,32 +18,29 @@
                         </ul>
                     </div>
                 </div>
+
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <input type="text" class="form-control"  v-model="name" placeholder="Ad Soyad">
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <input type="text" class="form-control" v-model="email"  placeholder="Email">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <input type="text"  v-mask="'##-###-###-##-##'" class="form-control" v-model="phone"  placeholder="Telefon">
                             </div>
                         </div>
-                        </div>
-                    </div>
 
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <input class="form-control" @change="selectDate" v-model="date" type="date">
+                            <input class="form-control" :min="minDate"  @change="selectDate" v-model="date" type="date">
                         </div>
                     </div>
                 </div>
@@ -54,31 +58,26 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <textarea v-model="text" id="" class="form-control" cols="30" rows="10"></textarea>
+                            <textarea v-model="text" id="" class="form-control" cols="30" rows="5"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                            <div class="row">
-                            <div class="col-md-6">
+                    <div class="col-md-12 notification-area">
                                 <div class="form-group">
-                                    <label for="">Sms</label>
-                                    <input type="radio" v-model="notification_type" value="0">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="">Email</label>
-                                    <input type="radio" v-model="notification_type" value="1">
-                                </div>
-                            </div>
-                            </div>
+                                    <input id="sms" type="radio" v-model="notification_type" value="0">
+                                    <label for="sms">Sms</label>
 
+                                </div>
+
+                                <div class="form-group">
+                                    <input id="email" type="radio" v-model="notification_type" value="1">
+                                    <label for="email">Email</label>
+                                </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 text-center">
                         <button v-on:click="store" class="btn btn-success">Randevu Oluştur</button>
                     </div>
                 </div>
@@ -95,6 +94,8 @@
 </template>
 
 <script>
+    import  io from  'socket.io-client';
+    var socket = io('http://localhost:3000');
     export default
     {
 
@@ -108,9 +109,14 @@
               email:null,
               phone:null,
               text:null,
+              minDate:new Date().toISOString().slice(0,10),
               date:new Date().toISOString().slice(0,10),
               workingHours:[]
           }
+        },
+        created()
+        {
+          socket.emit('hello');
         },
         mounted() {
            axios.get(`http://randevu.local/api/working-hours`)
@@ -120,8 +126,9 @@
         },
         methods:{
             store:function () {
-                this.completeForm = false;
-                if(this.notification_type && this.name && this.email && this.validEmail(this.email) && this.phone && this.workingHour!=0)
+
+
+                if(this.notification_type!=null && this.name!=null && this.email!=null && this.validEmail(this.email) && this.phone!=null && this.workingHour!=0)
                 {
                     axios.post(`http://randevu.local/api/appointment-store`,{
                         fullName:this.name,
@@ -133,6 +140,7 @@
                     }).then((res)=>{
                         if(res.status)
                         {
+                            socket.emit('new_appointment_create');
                             this.completeForm = false;
                         }
                     })

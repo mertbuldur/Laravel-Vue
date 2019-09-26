@@ -7,6 +7,7 @@
 require('./bootstrap');
 import VueMask from  'v-mask';
 
+
 window.Vue = require('vue');
 Vue.use(VueMask);
 Vue.use(require('vue-resource'));
@@ -21,9 +22,15 @@ Vue.use(require('vue-resource'));
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('randevuform-component',require('./components/RandevuFormComponent').default);
-Vue.component('adminappointment-component',require('./components/AdminAppointmentComponent').default);
+Vue.component('appointment-item',require('./components/Admin/AdminListAppointment').default);
+Vue.component('admin-appointment',require('./components/Admin/AdminComponent').default);
+Vue.component('admin-working',require('./components/Admin/AdminWorkingComponent').default);
+Vue.component('admin-working-item',require('./components/Admin/AdminWorkingItemComponent').default);
+Vue.component('admin-appointment-modal',require('./components/Admin/AdminAppointmentModal').default);
+
+Vue.component('appointment-form',require('./components/RandevuFormComponent').default);
+Vue.component('appointment-detail',require('./components/RandevuDetailComponent').default);
+
 Vue.component('pagination',require('laravel-vue-pagination'));
 /**
  * Next, we will create a fresh Vue application instance and attach it to

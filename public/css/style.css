@@ -1,3 +1,10 @@
+body {
+    font-family: "Quicksand", sans-serif;
+    color: #828181;
+    font-size: 14px;
+    line-height: 24px;
+}
+
 ul,li
 {
     padding:0;
@@ -60,6 +67,7 @@ li.errors
     background: white;
     border:1px solid #f5f5f5;
     padding: 10px;
+    margin-bottom: 5px;
 }
 
 .appointment-card .appointment-number
@@ -74,4 +82,132 @@ li.errors
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.tab-pane
+{
+    padding: 10px 0;
+}
+
+.new-appointment
+{
+    position: absolute;
+    top: 0;
+    background: red;
+    right: 0;
+    padding: 5px;
+    font-size: 12px;
+    color: white;
+}
+
+.appointment-buttons
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.bg-green
+{
+    background-color:green;
+}
+
+.bg-yellow
+{
+    background-color:yellow;
+}
+
+.version
+{
+    padding:5px;
+    background:#a73939;
+    color:white;
+    border-radius: 5px;
+}
+
+.main {
+    text-align:center;
+    margin-bottom: 50px;
+}
+
+.notification-area
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.notification-area .form-group
+{
+    font-size: 17px;
+}
+.notification-area .form-group:first-child
+{
+    margin-right:5px;
+}
+.py-4
+{
+    margin-top: 100px;
+}
+
+.modal-mask {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: table;
+    transition: opacity .3s ease;
+}
+
+.modal-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.modal-container {
+    width: 500px;
+    margin: 0px auto;
+    padding: 20px 30px;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+    transition: all .3s ease;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.modal-header h3 {
+    margin-top: 0;
+    color: #42b983;
+}
+
+.modal-body {
+    margin: 20px 0;
+}
+
+.modal-default-button {
+    float: right;
+}
+
+/*
+ * The following styles are auto-applied to elements with
+ * transition="modal" when their visibility is toggled
+ * by Vue.js.
+ *
+ * You can easily play with the modal transition by editing
+ * these styles.
+ */
+
+.modal-enter {
+    opacity: 0;
+}
+
+.modal-leave-active {
+    opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave-active .modal-container {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 }
